@@ -131,7 +131,7 @@ Sign up for a free account
 <h2>
 <a id="todays-projects" class="anchor" href="#todays-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Today's Projects</h2>
 <p>
-	Project 1: Inspect wifi hotspots to learn about map types
+    Project 1: Inspect wifi hotspots to learn about map types
     Project 2: How many wifi hotspots in each school district?
     Project 3: How many museums in each school district? (museums, nysd)
 </p>
@@ -149,7 +149,7 @@ Sign up for a free account
 <pre><code>open CartoDB
 </code></pre>
 
-<pre><code>New Dataset (green button in right hand corner)
+<pre><code>Click on New Dataset (green button in right hand corner)
 Datafile
 Browse
 Upload the entire ZIP file
@@ -168,10 +168,11 @@ call it 'wifi'
 CartoDB may have offered you "interesting maps" can click there for a direct link.
 Otherwise:</p>
 
-<pre><code>Click on the '1' in the box on the right - this will open a panel. All the features are found here
+<pre><code>Click on the '1' in the box on the right 
 </code></pre>
 
-<p>Let's look at some different maps:</p>
+<p></p>This will open a panel. All the features are found here.
+Let's look at some different maps:</p>
 
 <ul>
 <li>cluster</li>
@@ -289,22 +290,28 @@ open School District-merge
 <pre><code>click on plus sign on right hand side
 
 Select "museums" to add
+</code></pre>
 
 Q--&gt; What is different about a 'layer' versus a 'merge'??
 
 Go back and let's MERGE the museums with the school districts
 Make sure you are looking at datasets (not maps)
 
-</code></pre>
 
-<p>open school district_merge
+<pre><code>open school district_merge
 Edit
 Merge with dataset
 Spatial Join
-Choose 'Museums'</p>
+Choose 'Museums'</code></pre>
 
-<pre><code>Remember to merge on shape area 
-Select Count for what to do
+<pre><code>Column 1:
+shape_area
+
+Column 2: 
+Count
+
+Merge Datasets
+</code></pre> 
 
 Look at the maps again to figure out which one will be best.
 
@@ -312,27 +319,26 @@ Look at the maps again to figure out which one will be best.
 
     We are only interested in the school that have a museum in them (i.e., intersect count is greater than 0) - so we want to apply a filter.
 
-</code></pre>
+
 
 <pre><code>Click on the icon that looks like a column graph at the bottom
 Select intersect_count
 Adjust the boundaries of the slider to 1-12
 </code></pre>
 
-<pre><code>If you now click on SQL (structured Query Language), you will see the code for the filter you just created. Eventually you can just work with this code rather than using the filters
+If you now click on SQL (structured Query Language), you will see the code for the filter you just created. Eventually you can just work with this code rather than using the filters
 
-</code></pre>
 
 <pre><code>Apply Query, return to the table and Create Dataset from Query
 Rename it
 Switch to map view
 </code></pre>
 
-<pre><code>
+
 Q--&gt; What other questions can you ask about how data is related to space?
 
 That's it for these projects, from here, we will split into groups to play with your own projects.
-</code></pre>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/michellejm">michellejm</a></p>
