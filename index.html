@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gcdrb mapping by michellejm</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Gcdrb mapping</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/michellejm/GCDRB_Mapping">View the Project on GitHub <small>michellejm/GCDRB_Mapping</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/michellejm/GCDRB_Mapping/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/michellejm/GCDRB_Mapping/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/michellejm/GCDRB_Mapping">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="mapping-workshop" class="anchor" href="#mapping-workshop" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mapping Workshop</h1>
+
+<ol>
+<li>What is mapping (versus visualization)</li>
+</ol>
+
+<p>Q--&gt; What are 2-3 maps you use regularly?
+A--&gt; Map or visualization?</p>
+
+<ol>
+<li>Layers</li>
+</ol>
+
+<p>What makes mapping different from visualization is its relationship to actual space. Georeferencing ties information to a real location on the Earth. In the past, cartographers used acetate sheets to illustrate layers, and how a certain piece of information is tied to another piece of information in the world. By standardizing our maps and tying them to the same coordinate system, we are able to show the relationship between different types of data. </p>
+
+<ol>
+<li>File types</li>
+</ol>
+
+<p>a. Vector Files</p>
+
+<p>i. points, lines, polygons (shapes)</p>
+
+<p>These are way more abstract than it might seem. Vector files are not actual images of the places. A point is often used to represent a city, with one set of latitude/longitude coordinates. </p>
+
+<p>ii. File Types: </p>
+
+<p>ESRI Shapefiles (.shp), Google KML files (.kml), Geographic Markup Language files (GML). We will be working with .shp. </p>
+
+<p>b. Tables</p>
+
+<p>i. These contain the information about the space. With a location identifier, these can be mapped to the world. </p>
+
+<p>ii. Familiar file types (.csv, .txt, .xls) We will be working with .csv</p>
+
+<p>c. Raster files (not covered in this tutorial) refers to files that are more like images. It's a continuous surface divided into teeny tiny cells. Each cell is a different color based on something significant to the image. Generally used for aerial photos, satellite images, and old scanned maps (heat maps are made this way, too).</p>
+
+<p>d. Geodatabases (not covered in this tutorial) have all the information in one place. In a way, this is what we will be building in CartoDB, though geodatabases have ALL of it (raster, vector, tables). </p>
+
+<ol>
+<li>Ways to think about Maps</li>
+</ol>
+
+<p>a. Analyze spatial information </p>
+
+<p>b. Tell a story about the world</p>
+
+<p>c. Answer a question related to physical, cultural, political boundaries</p>
+
+<ol>
+<li>Georeferencing</li>
+</ol>
+
+<p>a. Information that refers to a point or area in the world. We need to turn information from what we use (zipcodes, addresses, streets, cities) and plotting it in something Mapping Programs care about (i.e., latitude/longitude, or ESRI x/y coordinates)</p>
+
+<p>b. CartoDB does automatic geocoding (i.e., will take an address and give it latitude/longitude), 100 records for free and then its paid ($15 per 1,000). If you will be doing lots of geocoding, Frank Donnolley's QGIS Workshop is the next step.</p>
+
+<p>Getting Started with CartoDB</p>
+
+<pre><code>go to CartoDB
+www.cartodb.com
+Sign up for a free account
+</code></pre>
+
+<h2>
+<a id="geographic-data" class="anchor" href="#geographic-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Geographic Data</h2>
+
+<h3>
+<a id="finding-data-sources" class="anchor" href="#finding-data-sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Finding Data Sources</h3>
+
+<pre><code>&lt;li&gt;We will be using &lt;a href="https://data.cityofnewyork.us/" target="_blank"&gt;NYC Open Data&lt;/a&gt; – lots of information here that has a spatial component to it&lt;/li&gt;
+</code></pre>
+
+<p>Places to find more data:</p>
+
+<ul>
+    <li>
+<a href="http://www.nyc.gov/html/dcp/html/bytes/applbyte.shtml#lion" target="_blank">Bytes of the Big Apple</a> Geospatial files of NYC (administrative boundaries, borough boundaries, etc.)</li>
+    <li>
+<a href="https://data.cityofnewyork.us/dashboard" target="_blank">NYC Open Data </a>All government organizations are required to provide their statistical data by 2018</li>
+    <li>
+<a href="http://www.nyc.gov/html/dcp/html/neighbor/index.shtml" target="_blank">NYC: City of Neighborhoods   </a>Data for each of the neighborhoods</li>
+<li>
+<a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/" target="_blank">Spatiality Blog  </a>Our very own Steve Romalewski, great subway info here!</li>
+    <li>
+<a href="http://www.oasisnyc.net/pages/data.aspx" target="_blank">Oasis maps for NYC</a><a href="http://www.city-data.com/album/album-New-York-New-York.html" target="_blank">City Data Images</a>
+</li>
+    <li><a href="http://www.census.gov/population/www/cen2010/glance/" target="_blank">2010 Census Data</a></li>
+    <li>
+<a href="https://www.nhgis.org/" target="_blank">National Historical Geographic Information System</a> Can put in a request for almost any amount of data</li>
+    </ul>
+            
+
+<h3>
+<a id="notes-about-data-for-cartodb" class="anchor" href="#notes-about-data-for-cartodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes about Data for CartoDB</h3>
+
+<ul>
+<li>Spreadsheets must be .csv files</li>
+<li>Shape files must be uploaded as zip files, and all the embedded files must have the same name (this is common practice anyhow, but it looks like this: dual_lang_school.zip file would contain dual_lang_school.shp, dual_lang_school.dbf, ne_10m_populated_places.shx and dual_lang_school.prj).</li>
+</ul>
+
+<h2>
+<a id="todays-projects" class="anchor" href="#todays-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Today's Projects</h2>
+
+<pre><code>    Project 1: Inspect wifi hotspots to learn about map types
+    Project 2: How many wifi hotspots in each school district?
+    Project 3: How many museums in each school district? (museums, nysd)
+</code></pre>
+
+<h2>
+<a id="project-1" class="anchor" href="#project-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project 1</h2>
+
+<p>Simple Plot of Spatial Data: Wifi Hotspots
+    Go to: <a href="https://data.cityofnewyork.us/Social-Services/NYC-Wi-Fi-Hotspot-Locations/a9we-mtpn">Wifi HotSpots</a> 
+    <a href="https://data.cityofnewyork.us/Social-Services/NYC-Wi-Fi-Hotspot-Locations/a9we-mtpn">https://data.cityofnewyork.us/Social-Services/NYC-Wi-Fi-Hotspot-Locations/a9we-mtpn</a></p>
+
+<pre><code>Download as Shapefile (do NOT unzip it)
+</code></pre>
+
+<pre><code>open CartoDB
+</code></pre>
+
+<pre><code>New Dataset (green button in right hand corner)
+Datafile
+Browse
+Upload the entire ZIP file
+click Connect Dataset in the bottom right
+</code></pre>
+
+<p>It should automatically plot all the wifi hotspots
+if you get a table, switch to 'map view' if you get a map, switch to 'table view'</p>
+
+<pre><code>Meet back in 'table view'
+Change the title by clicking on the title
+call it 'wifi'
+</code></pre>
+
+<p>These are points in space, but there is a lot of information behind the scenes
+CartoDB may have offered you "interesting maps" can click there for a direct link.
+Otherwise:</p>
+
+<pre><code>Click on the '1' in the box on the right - this will open a panel. All the features are found here
+</code></pre>
+
+<p>Let's look at some different maps:</p>
+
+<ul>
+<li>cluster</li>
+<li>chloropleth - does this make sense for our map?</li>
+<li>category
+
+<ul>
+<li>category on location</li>
+</ul>
+</li>
+</ul>
+
+<pre><code>Change the column to look at other features
+</code></pre>
+
+<pre><code>+ category on borough
+</code></pre>
+
+<p>That's all fine, and can be used to make very nice maps, but let's do some analysis with this tool.</p>
+
+<h2>
+<a id="project-2" class="anchor" href="#project-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project 2</h2>
+
+<ol>
+<li>Return to NYC Open Data</li>
+<li>search for Z2012-2013 School Zones ("<a href="https://data.cityofnewyork.us/Education/2012-2013-School-Zones/4szu-rxzq">https://data.cityofnewyork.us/Education/2012-2013-School-Zones/4szu-rxzq</a>")</li>
+</ol>
+
+<p>The download button is at the upper right</p>
+
+<p>Go back to CartoDB
+Return to the uploads page (teeny tiny arrow in upper left corner)
+Upload the data to CartoDB</p>
+
+<pre><code>New Dataset (green button in right hand corner)
+Datafile
+Browse
+Upload the entire ZIP file
+click Connect Dataset in the bottom right
+rename your data set 'School Zones'
+</code></pre>
+
+<p>Now let's see how many wifi hotspots are in each school district</p>
+
+<pre><code>Edit
+Merge with dataset
+Spatial Join
+Choose 'Wifi'
+</code></pre>
+
+<p>The first column here refers to the School districts file
+Second column refers to wifi 
+This is based on the order that you import that</p>
+
+<pre><code>Column 1:
+shape_area
+
+Column 2: 
+Count
+
+Merge Datasets
+</code></pre>
+
+<p>Q--&gt; Change the view - which view makes the most sense? Why?</p>
+
+<p>Let's annotate this map</p>
+
+<pre><code>click on a school district
+</code></pre>
+
+<p>This number does NOT refer to the count. 
+Select fields to display</p>
+
+<p>Q--&gt; What fields make the most sense?</p>
+
+<p>Play around with options here</p>
+
+<ul>
+<li>Add elements (annotate, etc)</li>
+<li>Preview (for phone or computer)</li>
+</ul>
+
+<p>Now let's add a layer!</p>
+
+<h2>
+<a id="project-3" class="anchor" href="#project-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project 3</h2>
+
+<ol>
+<li>Return to NYC Open Data</li>
+<li>search for NYC Museums ("hhttps://data.cityofnewyork.us/Recreation/New-York-City-Museums/ekax-ky3z")</li>
+</ol>
+
+<p>Download as shapefile</p>
+
+<p>Go back to CartoDB
+Return to the uploads page
+Upload the data to CartoDB</p>
+
+<pre><code>New Dataset (green button in right hand corner)
+Datafile
+Browse
+Upload the entire ZIP file
+click Connect Dataset in the bottom right
+rename your data set 'Museums'
+</code></pre>
+
+<p>Now we are going to put it all together</p>
+
+<pre><code>Return to list of datasets
+open School District-merge
+</code></pre>
+
+<p>now we are going to add a layer</p>
+
+<pre><code>click on plus sign on right hand side
+
+Select "museums" to add
+
+Q--&gt; What is different about a 'layer' versus a 'merge'??
+
+Go back and let's MERGE the museums with the school districts
+Make sure you are looking at datasets (not maps)
+
+</code></pre>
+
+<p>open school district_merge
+Edit
+Merge with dataset
+Spatial Join
+Choose 'Museums'</p>
+
+<pre><code>Remember to merge on shape area 
+Select Count for what to do
+
+Look at the maps again to figure out which one will be best.
+
+
+
+    We are only interested in the school that have a museum in them (i.e., intersect count is greater than 0) - so we want to apply a filter.
+
+</code></pre>
+
+<pre><code>Click on the icon that looks like a column graph at the bottom
+Select intersect_count
+Adjust the boundaries of the slider to 1-12
+</code></pre>
+
+<pre><code>If you now click on SQL (structured Query Language), you will see the code for the filter you just created. Eventually you can just work with this code rather than using the filters
+
+</code></pre>
+
+<pre><code>Apply Query, return to the table and Create Dataset from Query
+Rename it
+Switch to map view
+</code></pre>
+
+<pre><code>
+Q--&gt; What other questions can you ask about how data is related to space?
+
+That's it for these projects, from here, we will split into groups to play with your own projects.
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/michellejm">michellejm</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
