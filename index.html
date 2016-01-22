@@ -46,43 +46,43 @@ A--&gt; Map or visualization?</p>
 <p>What makes mapping different from visualization is its relationship to actual space. Georeferencing ties information to a real location on the Earth. In the past, cartographers used acetate sheets to illustrate layers, and how a certain piece of information is tied to another piece of information in the world. By standardizing our maps and tying them to the same coordinate system, we are able to show the relationship between different types of data. </p>
 
 
-<li>File types</li>
+<p>File types</p>
 
-<li>a. Vector Files</li>
+  <p>a. Vector Files</p>
 
-  <li>i. points, lines, polygons (shapes)</li>
+    <p>i. points, lines, polygons (shapes)</p>
 
 <p>These are way more abstract than it might seem. Vector files are not actual images of the places. A point is often used to represent a city, with one set of latitude/longitude coordinates. </p>
 
-  <li>ii. File Types: </li>
+  <p>ii. File Types: </p>
 
 <p>ESRI Shapefiles (.shp), Google KML files (.kml), Geographic Markup Language files (GML). We will be working with .shp. </p>
 
-<li>b. Tables</li>
+<p>b. Tables</p>
 
-    <li>i. These contain the information about the space. With a location identifier, these can be mapped to the world. </li>
+    <p>i. These contain the information about the space. With a location identifier, these can be mapped to the world. </p>
 
-  <li>ii. Familiar file types (.csv, .txt, .xls) We will be working with .csv</li>
+  <p>ii. Familiar file types (.csv, .txt, .xls) We will be working with .csv</p>
 
-<li>c. Raster files (not covered in this tutorial) refers to files that are more like images. It's a continuous surface divided into teeny tiny cells. Each cell is a different color based on something significant to the image. Generally used for aerial photos, satellite images, and old scanned maps (heat maps are made this way, too).</li>
+<p>c. Raster files (not covered in this tutorial) refers to files that are more like images. It's a continuous surface divided into teeny tiny cells. Each cell is a different color based on something significant to the image. Generally used for aerial photos, satellite images, and old scanned maps (heat maps are made this way, too).</p>
 
-<li>d. Geodatabases (not covered in this tutorial) have all the information in one place. In a way, this is what we will be building in CartoDB, though geodatabases have ALL of it (raster, vector, tables). </li>
+<p>d. Geodatabases (not covered in this tutorial) have all the information in one place. In a way, this is what we will be building in CartoDB, though geodatabases have ALL of it (raster, vector, tables). </p>
 
-<li>Ways to think about Maps</li>
+<p>Ways to think about Maps</p>
 
-  <li>a. Analyze spatial information </li>
+  <p>a. Analyze spatial information </p>
 
-  <li>b. Tell a story about the world</li>
+  <p>b. Tell a story about the world</p>
 
-  <li>c. Answer a question related to physical, cultural, political boundaries</li>
-
-
-<li>Georeferencing</li>
+  <p>c. Answer a question related to physical, cultural, political boundaries</p>
 
 
-  <li>a. Information that refers to a point or area in the world. We need to turn information from what we use (zipcodes, addresses, streets, cities) and plotting it in something Mapping Programs care about (i.e., latitude/longitude, or ESRI x/y coordinates)</li>
+<p>Georeferencing</p>
 
-  <li>b. CartoDB does automatic geocoding (i.e., will take an address and give it latitude/longitude), 100 records for free and then its paid ($15 per 1,000). If you will be doing lots of geocoding, Frank Donnolley's QGIS Workshop is the next step.</li>
+
+  <p>a. Information that refers to a point or area in the world. We need to turn information from what we use (zipcodes, addresses, streets, cities) and plotting it in something Mapping Programs care about (i.e., latitude/longitude, or ESRI x/y coordinates)</li>
+
+  <p>b. CartoDB does automatic geocoding (i.e., will take an address and give it latitude/longitude), 100 records for free and then its paid ($15 per 1,000). If you will be doing lots of geocoding, Frank Donnolley's QGIS Workshop is the next step.</p>
 </ol>
 <h2>Getting Started with CartoDB</h2>
 
